@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5915d4a7-d4fc-4d32-ba2f-44d2ad03b02e" name="Changes" comment="" />
+    <list default="true" id="5915d4a7-d4fc-4d32-ba2f-44d2ad03b02e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tạo dự án spring gradle 2022/spring_gradle.mp4" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +51,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/C0623G1_Ngo_Quang_Truong_Module4/ss01_spring_mvc/ex",
+    "last_opened_file_path": "E:/C0623G1_Ngo_Quang_Truong_Module4/ss01_spring_mvc/ex2_dictionary",
     "spring.configuration.checksum": "8780cc31e7842ee9ac5d9277fd795310"
   }
 }]]></component>
@@ -58,6 +61,19 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ex" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ex" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.21" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.21" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
@@ -155,7 +171,8 @@
       <option name="presentableId" value="Default" />
       <updated>1697093303805</updated>
       <workItem from="1697093305377" duration="4489000" />
-      <workItem from="1697098921096" duration="952000" />
+      <workItem from="1697098921096" duration="953000" />
+      <workItem from="1697167586375" duration="95000" />
     </task>
     <servers />
   </component>

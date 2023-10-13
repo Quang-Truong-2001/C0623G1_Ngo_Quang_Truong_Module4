@@ -25,11 +25,9 @@ public class DictionaryController {
         String result=dictionaryService.findByWord(english);
         if(result==null){
             model.addAttribute("vietnamese","Không tìm thấy");
-            return "dictionary";
         } else {
             model.addAttribute("vietnamese",dictionaryService.findByWord(english));
-            return "dictionary";
         }
-
+        return "dictionary";
     }
 }
