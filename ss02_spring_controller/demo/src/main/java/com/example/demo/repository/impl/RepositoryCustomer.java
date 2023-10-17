@@ -43,6 +43,7 @@ public class RepositoryCustomer implements IRepositoryCustomer {
 
     @Override
     public void save(Customer customer) {
-
+        customer.setId(customers.size()+1);
+        customers.add(customer);
     }
 }

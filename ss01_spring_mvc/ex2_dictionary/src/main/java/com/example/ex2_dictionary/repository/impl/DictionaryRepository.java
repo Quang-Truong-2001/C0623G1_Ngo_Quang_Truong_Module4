@@ -16,13 +16,6 @@ public class DictionaryRepository implements IDictionaryRepository {
     }
     @Override
     public String findByWord(String word) {
-        String result=null;
-        for(Map.Entry<String, String> entry: dictionary.entrySet()){
-            if(entry.getKey().equals(word)){
-                result = entry.getValue();
-                break;
-            }
-        }
-        return result;
+        return dictionary.get(word);
     }
 }

@@ -18,12 +18,16 @@
     <div class="container">
         <form action="/save" method="post">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">username</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail2" class="form-label">password</label>
-                <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="password">
+                <label for="exampleInputEmail2" class="form-label">Email</label>
+                <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail3" class="form-label">Address</label>
+                <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" name="address">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
