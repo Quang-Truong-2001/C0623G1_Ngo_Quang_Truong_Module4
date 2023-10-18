@@ -1,23 +1,23 @@
 package com.example.ex_email_settings.repository.impl;
 
-import com.example.ex_email_settings.model.Setting;
-import com.example.ex_email_settings.repository.IEmailSettingRepository;
+import com.example.ex_email_settings.model.Email;
+import com.example.ex_email_settings.repository.IEmailRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EmailSettingRepositoryImpl implements IEmailSettingRepository {
-    private static Setting setting;
+public class EmailRepositoryImpl implements IEmailRepository {
+    private static Email setting;
 
     static {
-        setting =new Setting("Vietnamese", 25, false, "David");
+        setting =new Email("Vietnamese", 25, false, "David");
     }
     @Override
-    public Setting show() {
+    public Email show() {
         return setting;
     }
 
     @Override
-    public void update(Setting email) {
+    public void update(Email email) {
         setting.setLanguage(email.getLanguage());
         setting.setPageSize(email.getPageSize());
         setting.setSpam(email.isSpam());

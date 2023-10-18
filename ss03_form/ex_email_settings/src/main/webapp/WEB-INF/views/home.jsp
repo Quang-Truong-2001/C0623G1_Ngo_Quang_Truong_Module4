@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <h2>Setting</h2>
-    <form:form modelAttribute="setting" action="/update" method="post">
+    <form:form modelAttribute="email" action="/update" method="post">
         <table>
             <tr>
                 <td>Languages</td>

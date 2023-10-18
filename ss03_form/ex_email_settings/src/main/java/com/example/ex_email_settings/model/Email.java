@@ -1,16 +1,16 @@
 package com.example.ex_email_settings.model;
 
-public class Setting {
+public class Email {
     private String language;
     private int pageSize;
     private boolean spam;
     private String signature;
 
 
-    public Setting() {
+    public Email() {
     }
 
-    public Setting(String languages, int pageSize, boolean spam, String signature) {
+    public Email(String languages, int pageSize, boolean spam, String signature) {
         this.language = languages;
         this.pageSize = pageSize;
         this.spam = spam;
