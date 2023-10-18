@@ -51,8 +51,9 @@ public class ProductController {
         service.update(product);
         return "redirect:/";
     }
-    @GetMapping("{id}/delete")
-    public String delete(@PathVariable int id){
+    @GetMapping("/delete")
+    public String delete(HttpServletRequest request){
+        int id= Integer.parseInt(request.getParameter("id"));
         service.delete(id);
         return "redirect:/";
     }
