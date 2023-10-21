@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .header{
+            color: blue;
+        }
+        .footer{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header" th:replace="~{/layout::header}"></div>
+    <h2>Blog</h2>
+    <div style="width: 800px">
+        <h1 style="color: red" th:if="${list.isEmpty()}">NoData</h1>
+        <form action="/findByName">
+            <div style="display: flex">
+                <div>
+                    <label for="nameFind">FindByName</label>
+                    <input class="form-control" id="nameFind" type="text" name="nameFind">
+                </div>
+                <div class="mt-4 ms-2">
+                    <input class="btn btn-primary" type="submit" value="FIND">
+                </div>
+            </div>
+        </form>
+        <table th:unless="${list.isEmpty()}" class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tittle</th>
+                <th scope="col">Category</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="blog, loop :${list}">
+                    <td th:text="${loop.count}"></td>
+                    <td th:text="${blog.tittle}">Hoa</td>
+                    <td th:text="${blog.category.name}">Hoa</td>
+                    <td style="display: flex ">
+                        <div class="action-course justify-content-around">
+                            <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{{id}/detail(id=${blog.id})}"
+                              >VIEW</a>
+                        </div>
+                        <div class="ms-3 action-course justify-content-around">
+                            <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{{id}/edit(id=${blog.id})}"
+                            >EDIT</a>
+                        </div>
+<!--                        <div class="ms-3 action-course justify-content-around">-->
+<!--                            <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{__${Blog.id}__/edit}"-->
+<!--                            >EDIT2</a>-->
+<!--                        </div><div class="ms-3 action-course justify-content-around">-->
+<!--                            <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{/edit(id=${Blog.id})}"-->
+<!--                            >EDIT3</a>-->
+<!--                        </div>-->
+                        <div class="ms-3 action-course justify-content-around">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    th:attr="onclick=|confirmDelete('${blog.tittle}','${blog.id}')|">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{/add}"
+        >ADD</a>
+        <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{/category}"
+        >CATEGORY MANAGER</a>
+        <a class="btn btn-primary" th:if="${list.hasPrevious()}"
+           th:href="@{/list/page(page=${list.number - 1})}">Previous</a>
+        <span th:text="${list.number + 1}"></span> | <span th:text="${list.totalPages}"></span>
+        <a class="btn btn-primary" th:if="${list.hasNext()}"
+           th:href="@{/list/page(page=${list.number + 1})}">Next</a>
+        <div class="footer" th:replace="~{/layout::footer}">
+        </div>
+</div>
+<!-- Modal xóa/-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/delete">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b>Delete</b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you want to delete
+                        <span style="color: red" id="name"></span></p>
+                    <input type="text" hidden="hidden" name="id" id="id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    //delete modal
+    function confirmDelete(name, id) {
+        document.getElementById("name").innerText = name;
+        document.getElementById("id").value = id;
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
