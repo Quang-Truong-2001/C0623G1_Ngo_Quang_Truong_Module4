@@ -14,6 +14,5 @@ public interface IBlogService {
     void delete(Long id);
     Blog detail(Long id);
     List<Blog> findByName(String name);
-
     Page<Blog> showList(Pageable pageable);
 }

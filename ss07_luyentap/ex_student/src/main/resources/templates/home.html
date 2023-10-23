@@ -14,8 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="header" th:replace="~{/layout::header}"></div>
-    <h2>Blog</h2>
+    <h2>Student</h2>
     <div style="width: 800px">
         <h1 style="color: red" th:if="${list.isEmpty()}">NoData</h1>
         <form action="/findByName">
@@ -33,28 +32,35 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Tittle</th>
-                <th scope="col">Category</th>
+                <th scope="col">Name</th>
+                <th scope="col">Account</th>
+                <th scope="col">ClassRoom</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-                <tr th:each="blog, loop :${list}">
-                    <td th:text="${blog.id}"></td>
-                    <td th:text="${blog.tittle}">Hoa</td>
-                    <td th:text="${blog.category.name}">Hoa</td>
+                <tr th:each="student, loop :${list}">
+                    <td th:text="${student.id}">Hoa</td>
+                    <td th:text="${student.name}">Hoa</td>
+                    <td th:text="${student.account.accountName}">Hoa</td>
+                    <td th:text="${student.classRoom.name}">Hoa</td>
+                    <td>
+                        <p th:each="s:${student.course.name}" th:text="${s.name}">
+
+                        </p>
+                    </td>
                     <td style="display: flex ">
                         <div class="action-course justify-content-around">
-                            <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{{id}/detail(id=${blog.id})}"
+                            <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{{id}/detail(id=${student.id})}"
                               >VIEW</a>
                         </div>
                         <div class="ms-3 action-course justify-content-around">
-                            <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{{id}/edit(id=${blog.id})}"
+                            <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{{id}/edit(id=${student.id})}"
                             >EDIT</a>
                         </div>
                         <div class="ms-3 action-course justify-content-around">
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                    th:attr="onclick=|confirmDelete('${blog.tittle}','${blog.id}')|">
+                                    th:attr="onclick=|confirmDelete('${student.name}','${student.id}')|">
                                 Delete
                             </button>
                         </div>

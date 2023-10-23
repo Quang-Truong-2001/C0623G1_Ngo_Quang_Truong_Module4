@@ -32,14 +32,14 @@
         <table th:unless="${list.isEmpty()}" class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">ID</th>
                 <th scope="col">Category</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
                 <tr th:each="category, loop :${list}">
-                    <td th:text="${loop.count}"></td>
+                    <td th:text="${category.id}"></td>
                     <td th:text="${category.name}">Hoa</td>
                     <td style="display: flex ">
                         <div class="action-course justify-content-around">
@@ -50,13 +50,6 @@
                             <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{/category/{id}/edit(id=${category.id})}"
                             >EDIT</a>
                         </div>
-<!--                        <div class="ms-3 action-course justify-content-around">-->
-<!--                            <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{__${Blog.id}__/edit}"-->
-<!--                            >EDIT2</a>-->
-<!--                        </div><div class="ms-3 action-course justify-content-around">-->
-<!--                            <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{/edit(id=${Blog.id})}"-->
-<!--                            >EDIT3</a>-->
-<!--                        </div>-->
                         <div class="ms-3 action-course justify-content-around">
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                     th:attr="onclick=|confirmDelete('${category.name}','${category.id}')|">

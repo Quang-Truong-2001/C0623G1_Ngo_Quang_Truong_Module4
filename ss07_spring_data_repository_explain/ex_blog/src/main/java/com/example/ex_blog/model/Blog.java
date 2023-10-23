@@ -12,6 +12,18 @@ public class Blog {
     private String tittle;
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name="category_id", referencedColumnName = "id")
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Blog(String tittle, String content, Category category) {
         this.tittle = tittle;
         this.content = content;
@@ -24,18 +36,6 @@ public class Blog {
         this.content = content;
         this.category = category;
     }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    @ManyToOne
-    @JoinColumn(name="category_id")
-    private Category category;
 
     public Blog(Long id, String tittle, String content) {
         this.id = id;

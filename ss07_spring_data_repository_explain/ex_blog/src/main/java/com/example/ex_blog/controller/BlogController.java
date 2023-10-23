@@ -7,6 +7,8 @@ import com.example.ex_blog.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +26,8 @@ public class BlogController {
     private ICategoryService categoryService;
 
     @GetMapping("")
-    public ModelAndView showList(Pageable pageable){
-        Page<Blog> blogs=service.showList(pageable);
-        return new ModelAndView("home","list",blogs);
+    public ModelAndView showList(@PageableDefault(value = 4, sort="id", direction = Sort.Direction.ASC) Pageable pageable){
+        return new ModelAndView("home","list",service.showList(pageable));
     }
 
     @GetMapping("/add")
