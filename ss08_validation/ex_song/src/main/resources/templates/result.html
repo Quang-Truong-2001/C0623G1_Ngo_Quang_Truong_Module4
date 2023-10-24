@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 style="color: green" th:if="${message!=null}" th:text="${message}"></h1>
+    <table th:unless="${list.isEmpty()}" class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Song</th>
+            <th scope="col">Musician</th>
+            <th scope="col">Category</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="l, loop :${list}">
+            <td th:text="${l.id}">Hoa</td>
+            <td th:text="${l.song}">Hoa</td>
+            <td th:text="${l.musician}">Hoa</td>
+            <td th:text="${l.category}">Hoa</td>
+            <td style="display: flex ">
+<!--                <div class="action-course justify-content-around">-->
+<!--                    <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{{id}/detail(id=${l.id})}"-->
+<!--                    >VIEW</a>-->
+<!--                </div>-->
+                <div class="ms-3 action-course justify-content-around">
+                    <a role="button" class="btn btn-warning edit btn-content mb-1" th:href="@{/update(id=${l.id})}"
+                    >EDIT</a>
+                </div>
+<!--                <div class="ms-3 action-course justify-content-around">-->
+<!--                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"-->
+<!--                            th:attr="onclick=|confirmDelete('${student.name}','${student.id}')|">-->
+<!--                        Delete-->
+<!--                    </button>-->
+<!--                </div>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{/create}"
+    >ADD</a>
+</body>
+</html>

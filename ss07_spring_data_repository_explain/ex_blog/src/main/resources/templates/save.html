@@ -12,11 +12,11 @@
     <form th:object="${blog}" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">Tittle</label>
-            <input type="text" class="form-control" id="name" th:field="*{tittle}" >
+            <input required type="text" class="form-control" id="name" th:field="*{tittle}" >
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea class="form-control" id="content" style="width: 100%; height: 300px" th:field="*{content}">
+            <textarea required class="form-control" id="content" style="width: 100%; height: 300px" th:field="*{content}">
         </textarea>
         </div>
         <div>
@@ -25,6 +25,10 @@
                 <option th:each="c:${category}" th:text="${c.name}" th:value="${c.id}"></option>
             </select>
 
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" th:field="*{date}" required >
         </div>
         <div class="mb-3">
             <input type="submit" class="btn btn-primary" value="submit">

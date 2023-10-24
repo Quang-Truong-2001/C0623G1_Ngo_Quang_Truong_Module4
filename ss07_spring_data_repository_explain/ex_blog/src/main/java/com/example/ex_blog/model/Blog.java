@@ -11,6 +11,16 @@ public class Blog {
     private Long id;
     private String tittle;
     private String content;
+    @Column(columnDefinition = "date")
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     @ManyToOne
     @JoinColumn(name="category_id", referencedColumnName = "id")

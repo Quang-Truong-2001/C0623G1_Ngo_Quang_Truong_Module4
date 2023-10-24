@@ -35,14 +35,16 @@
                 <th scope="col">ID</th>
                 <th scope="col">Tittle</th>
                 <th scope="col">Category</th>
+                <th scope="col">Date</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
                 <tr th:each="blog, loop :${list}">
-                    <td th:text="${blog.id}"></td>
+                    <td th:text="${loop.count}"></td>
                     <td th:text="${blog.tittle}">Hoa</td>
                     <td th:text="${blog.category.name}">Hoa</td>
+                    <td th:text="${blog.date}">Hoa</td>
                     <td style="display: flex ">
                         <div class="action-course justify-content-around">
                             <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{{id}/detail(id=${blog.id})}"
