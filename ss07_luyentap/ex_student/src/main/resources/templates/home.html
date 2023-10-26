@@ -44,11 +44,11 @@
                     <td th:text="${student.name}">Hoa</td>
                     <td th:text="${student.account.accountName}">Hoa</td>
                     <td th:text="${student.classRoom.name}">Hoa</td>
-                    <td>
-                        <p th:each="s:${student.course.name}" th:text="${s.name}">
+<!--                    <td>-->
+<!--                        <p th:each="s:${student.course.name}" th:text="${s.name}">-->
 
-                        </p>
-                    </td>
+<!--                        </p>-->
+<!--                    </td>-->
                     <td style="display: flex ">
                         <div class="action-course justify-content-around">
                             <a role="button" class="btn btn-primary edit btn-content mb-1" th:href="@{{id}/detail(id=${student.id})}"
