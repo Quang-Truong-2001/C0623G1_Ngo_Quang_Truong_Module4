@@ -31,9 +31,11 @@ public class UserController {
     @PostMapping("/create")
     public String create(@Validated @ModelAttribute UserDTO userDTO,
                          BindingResult bindingResult,
-                         RedirectAttributes redirectAttributes){
+                         RedirectAttributes redirectAttributes,
+                         Model model){
         new UserDTO().validate(userDTO,bindingResult);
         if(bindingResult.hasFieldErrors()){
+            model.addAttribute("userDTO",userDTO);
             return "index";
         } else {
             User user=new User();

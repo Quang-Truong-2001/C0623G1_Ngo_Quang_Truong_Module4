@@ -32,9 +32,10 @@ public class MusicController {
     }
 
     @PostMapping("/create")
-    public String create(@Validated @ModelAttribute MusicDTO musicDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String create(@Validated @ModelAttribute MusicDTO musicDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         new MusicDTO().validate(musicDTO, bindingResult);
         if (bindingResult.hasErrors()) {
+            model.addAttribute("musicDTO", musicDTO);
             return "index";
         } else {
             Music music = new Music();
@@ -52,9 +53,10 @@ public class MusicController {
     }
 
     @PostMapping("/update")
-    public String update(@Validated @ModelAttribute MusicDTO musicDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String update(@Validated @ModelAttribute MusicDTO musicDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         new MusicDTO().validate(musicDTO, bindingResult);
         if (bindingResult.hasErrors()) {
+            model.addAttribute("musicDTO", musicDTO);
             return "index";
         } else {
             Music music = new Music();

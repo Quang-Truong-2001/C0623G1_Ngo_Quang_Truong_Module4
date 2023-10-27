@@ -33,7 +33,7 @@ public class BookController {
     }
 
     @PostMapping("/order")
-    public String success(@ModelAttribute Book book, Model model) {
+    public String borrow(@ModelAttribute Book book, Model model) {
         if (book.getQuantity() > 0) {
             book.setQuantity(book.getQuantity() - 1);
             serviceBook.save(book);
@@ -53,7 +53,7 @@ public class BookController {
     }
 
     @PostMapping("/delete")
-    public String payBook(@ModelAttribute Card card) {
+    public String returnBook(@ModelAttribute Card card) {
         Card cardPay = serviceCard.detail(card.getCode());
         if (cardPay != null) {
             serviceCard.delete(cardPay);
