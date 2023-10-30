@@ -26,7 +26,7 @@ public class BlogServiceImpl implements IBlogService {
 
     @Override
     public void update(Blog blog) {
-        repository.save(blog);
+        repository.updateBlog(blog.getTittle(), blog.getContent(), blog.getId());
     }
 
     @Override

@@ -25,9 +25,15 @@ public class PaymentController {
     @GetMapping("")
     public String getPay() throws UnsupportedEncodingException {
 
-        long amount=10000000*100;
+        String orderType = "other";
+//        long amount = Integer.parseInt(req.getParameter("amount"))*100;
+//        String bankCode = req.getParameter("bankCode");
+        long amount=Math.round(10000 * 100);
+
         String vnp_TxnRef = Config.getRandomNumber(8);
-        String vnp_IpAddr = "127.0.0.1";
+//        String vnp_IpAddr = "192.168.1.64";
+        String vnp_IpAddr = "0:0:0:0:0:0:0:1";
+
         String vnp_TmnCode = Config.vnp_TmnCode;
 
         Map<String, String> vnp_Params = new HashMap<>();
@@ -37,10 +43,12 @@ public class PaymentController {
         vnp_Params.put("vnp_Amount", String.valueOf(amount));
         vnp_Params.put("vnp_CurrCode", "VND");
         vnp_Params.put("vnp_BankCode", "NCB");
+
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
         vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
-        vnp_Params.put("vnp_OrderType", "other");
+        vnp_Params.put("vnp_OrderType", orderType);
         vnp_Params.put("vnp_Locale", "vn");
+//        String locate = req.getParameter("language");
         vnp_Params.put("vnp_ReturnUrl", Config.vnp_ReturnUrl);
         vnp_Params.put("vnp_IpAddr", vnp_IpAddr);
 
@@ -81,12 +89,6 @@ public class PaymentController {
         String vnp_SecureHash = Config.hmacSHA512(Config.secretKey, hashData.toString());
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
         String paymentUrl = Config.vnp_PayUrl + "?" + queryUrl;
-//        com.google.gson.JsonObject job = new JsonObject();
-//        job.addProperty("code", "00");
-//        job.addProperty("message", "success");
-//        job.addProperty("data", paymentUrl);
-//        Gson gson = new Gson();
-//        resp.getWriter().write(gson.toJson(job));
         return paymentUrl;
     }
 }
