@@ -4,10 +4,7 @@ import com.example.vn_pay.DTO.PaymentResDTO;
 import com.example.vn_pay.config.Config;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -18,10 +15,6 @@ import java.util.*;
 @RestController
 @RequestMapping("")
 public class PaymentController {
-    @GetMapping("/loi")
-    public String loi(){
-        return "home";
-    }
     @GetMapping("")
     public String getPay() throws UnsupportedEncodingException {
 
@@ -37,6 +30,7 @@ public class PaymentController {
         String vnp_TmnCode = Config.vnp_TmnCode;
 
         Map<String, String> vnp_Params = new HashMap<>();
+
         vnp_Params.put("vnp_Version", Config.vnp_Version);
         vnp_Params.put("vnp_Command", Config.vnp_Command);
         vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
@@ -91,4 +85,5 @@ public class PaymentController {
         String paymentUrl = Config.vnp_PayUrl + "?" + queryUrl;
         return paymentUrl;
     }
+
 }
