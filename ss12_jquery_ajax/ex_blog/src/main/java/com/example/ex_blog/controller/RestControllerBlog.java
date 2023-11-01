@@ -69,8 +69,13 @@ public class RestControllerBlog {
     }
     @PostMapping("/add")
     public ResponseEntity addBlog(@RequestBody BlogDto blogDto){
+        System.out.println(blogDto.getIdCategory());
         Blog blog=new Blog();
-        BeanUtils.copyProperties(blogDto,blog);
+        blog.setTittle(blogDto.getTittle());
+        blog.setContent(blogDto.getContent());
+        blog.setDate(blogDto.getDate());
+        Long idCategory= Long.valueOf(blogDto.getIdCategory());
+        blog.setCategory(categoryService.findById(idCategory));
         service.create(blog);
         return new ResponseEntity<>(HttpStatus.OK);
     }

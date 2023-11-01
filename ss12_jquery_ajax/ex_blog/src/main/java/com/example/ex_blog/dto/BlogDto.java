@@ -10,25 +10,12 @@ public class BlogDto {
     private String tittle;
     private String content;
     private String date;
-    private Category category;
+    private String idCategory;
 
-    public BlogDto(Long id, String tittle, String content, String date, Category category) {
-        this.id = id;
-        this.tittle = tittle;
-        this.content = content;
-        this.date = date;
-        this.category = category;
-    }
 
     public BlogDto() {
     }
 
-    public BlogDto(String tittle, String content, String date, Category category) {
-        this.tittle = tittle;
-        this.content = content;
-        this.date = date;
-        this.category = category;
-    }
 
     public Long getId() {
         return id;
@@ -62,11 +49,11 @@ public class BlogDto {
         this.date = date;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getIdCategory() {
+        return idCategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setIdCategory(String idCategory) {
+        this.idCategory = idCategory;
     }
 }

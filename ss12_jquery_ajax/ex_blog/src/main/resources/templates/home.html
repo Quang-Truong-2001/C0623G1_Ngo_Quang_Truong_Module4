@@ -18,6 +18,9 @@
         <div class="mt-4 ms-2 mb-4">
             <button type="button" class="btn btn-primary" id="btnFind">FIND</button>
         </div>
+        <div class="mt-4 ms-2 mb-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#exampleModal">ADD</button>
+        </div>
     </div>
     <div style="width: 800px">
         <table class="table">
@@ -42,15 +45,34 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">DELETE</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">ADD</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you sure?
+                    <div>
+                        <label for="tittle" class="form-label">Tittle</label>
+                        <input type="text" class="form-control" id="tittle" >
+                    </div>
+                    <div>
+                        <label for="contentBlog" class="form-label">Content</label>
+                        <input type="text" class="form-control" id="contentBlog" >
+                    </div>
+                    <div>
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" >
+                    </div>
+                    <div>
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" class="form-select" >
+                            <option value="1">A</option>
+                            <option value="2">B</option>
+                            <option value="3">C</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-primary" id="btnCreate">Create</button>
                 </div>
             </div>
         </div>
@@ -91,14 +113,6 @@
             }
         })
     }
-    // function deleteBlog(id){
-    //     console.log(id);
-    //     $.ajax({
-    //         type: "DELETE",
-    //         url: "http://localhost:8080/api/blog/"+id,
-    //         success : init(page)
-    //     })
-    // }
     $("#btnFind").click(function (){
         let nameFind = $("#nameFind").val()
         $.ajax({
@@ -115,10 +129,34 @@
                     tr.push("<td>"+data[i].tittle +"</td>")
                     tr.push("<td>"+data[i].content +"</td>")
                     tr.push("<td>"+data[i].date +"</td>")
-                    // tr.push("<td>"+ "<a role='button' class='btn btn-danger' onclick='deleteBlog("+data[i].id +")'>DELETE</a>" +"</td>")
                     tr.push("</tr>")
                 }
                 $("tbody").append(tr.join(""))
+            }
+        })
+    })
+    $("#btnCreate").click(function (){
+        let tittle=$("#tittle").val();
+        let contentBlog=$("#contentBlog").val();
+        let date=$("#date").val();
+        let category=$("#category").val()
+        console.log(category)
+        $.ajax({
+            url: "http://localhost:8080/api/blog/add",
+            type: "POST",
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify({
+                'tittle': tittle,
+                'content': contentBlog,
+                'date': date,
+                'idCategory': category
+            }),
+            success: function (){
+                console.log("OK")
+                $("#exampleModal").modal('hide')
+                $("tbody").empty()
+                page=0;
+                init(page)
             }
         })
     })
